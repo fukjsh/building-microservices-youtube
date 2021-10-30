@@ -7,8 +7,9 @@ import (
 	"os"
 	"os/signal"
 	"time"
-	"github.com/nicholasjackson/env"
+
 	"github.com/nicholasjackson/building-microservices-youtube/product-api/handlers"
+	"github.com/nicholasjackson/env"
 )
 
 var bindAddress = env.String("BIND_ADDRESS", false, ":9090", "Bind address for the server")
@@ -30,7 +31,7 @@ func main() {
 
 	// create a new server
 	s := http.Server{
-		Addr:         *bindAddress,      // configure the bind address
+		Addr:         "localhost:9090",  // configure the bind address
 		Handler:      sm,                // set the default handler
 		ErrorLog:     l,                 // set the logger for the server
 		ReadTimeout:  5 * time.Second,   // max time to read request from the client
